@@ -13,3 +13,7 @@ cargo run --package utmp-classic --example dump-utmp utmp
 
 # history
 This library is based on [utmp-rs](https://github.com/upsuper/utmp-rs) library by *upsuper*; changed to work on the classic AT&T Unix v1 style `utmp` files still used by OpenBSD.
+
+# rust crate
+- [utmp-classic crate on lib.rs](https://lib.rs/crates/utmp-classic)
+- [utmp-classic docs on docs.rs](https://docs.rs/utmp-classic/latest/utmp_classic/)
