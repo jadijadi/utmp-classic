@@ -1,0 +1,19 @@
+[package]
+name = "utmp-classic-raw"
+edition = "2021"
+description = "Provides raw types for parsing login records in classic utmp (UNIXv1 & OpenBSD) file"
+keywords = ["utmp", "openbsd", "unix", "login"]
+categories = ["os::unix-apis"]
+authors = ["Jadi <jadijadi@gmail.com>"]
+repository = "https://github.com/jadijadi/utmp-classic"
+license = "MIT"
+version = "0.1.1"
+readme = "README.md"
+
+[[example]]
+name = "dump-utmp"
+path = "src/dump_utmp.rs"
+
+[dependencies]
+cfg-if = "1.0.0"
+zerocopy = "0.6"

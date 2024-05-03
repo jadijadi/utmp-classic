@@ -12,8 +12,24 @@ readme = "README.md"
 
 [[example]]
 name = "dump-utmp"
-path = "src/dump_utmp.rs"
+path = "examples/dump_utmp.rs"
 
 [dependencies]
 cfg-if = "1.0.0"
 zerocopy = "0.6"
+time = "0.3"
+libc = "0.2.66"
+utmp-classic-raw = { version = "0.1.1", path = "raw" }
+thiserror = "1.0.10"
+
+
+[workspace]
+members = ["raw"]
+
+[dev-dependencies]
+anyhow = "1.0.26"
+once_cell = "1.3.1"
+
+[package.metadata.docs.rs]
+default-target = "x86_64-unknown-linux-gnu"
+targets = ["aarch64-unknown-linux-gnu"]
