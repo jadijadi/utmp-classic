@@ -10,10 +10,6 @@ license = "MIT"
 version = "0.1.1"
 readme = "README.md"
 
-[[example]]
-name = "dump-utmp"
-path = "src/dump_utmp.rs"
-
 [dependencies]
 cfg-if = "1.0.0"
 zerocopy = "0.6"
