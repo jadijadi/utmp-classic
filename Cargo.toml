@@ -8,6 +8,7 @@ authors = ["Jadi <jadijadi@gmail.com>"]
 repository = "https://github.com/jadijadi/utmp-classic"
 license = "MIT"
 version = "0.1.0"
+readme = "README.md"
 
 [[example]]
 name = "dump-utmp"
