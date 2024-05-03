@@ -35,9 +35,9 @@ impl<T> UtmpParserImpl<BufReader<File>, T> {
 /// Parser to parse a utmp file. It can be used as an iterator.
 ///
 /// ```
-/// # use utmp_rs::UtmpParser;
+/// # use utmp_classic::UtmpParser;
 /// # fn main() -> Result<(), Box<dyn std::error::Error>> {
-/// for entry in UtmpParser::from_path("/var/run/utmp")? {
+/// for entry in UtmpParser::from_path("tests/samples/basic.utmp")? {
 ///     let entry = entry?;
 ///     // handle entry
 /// }
