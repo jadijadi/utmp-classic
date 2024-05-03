@@ -12,4 +12,4 @@ cargo run --package utmp-classic --example dump-utmp utmp
 ```
 
 # history
-This library is based on `[utmp-rs](https://github.com/upsuper/utmp-rs)` library by *upsuper*; changed to work on the classic AT&T Unix v1 style `utmp` files still used by OpenBSD.
+This library is based on [utmp-rs](https://github.com/upsuper/utmp-rs) library by *upsuper*; changed to work on the classic AT&T Unix v1 style `utmp` files still used by OpenBSD.
