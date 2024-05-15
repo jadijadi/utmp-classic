@@ -14,13 +14,14 @@ pub struct timeval {
 #[repr(C)]
 #[derive(Clone, Copy, FromBytes)]
 pub struct utmp {
+    /// Device name of tty - `"/dev/"`
     pub ut_line: [u8; UT_LINESIZE],
-    /// Terminal name suffix, or `inittab(5)` ID
+    /// Username
     pub ut_user: [u8; UT_NAMESIZE],
     /// Hostname for remote login, or kernel version for run-level message
     pub ut_host: [u8; UT_HOSTSIZE],
     /// Time entry was made
-    pub ut_tv: timeval
+    pub ut_tv: timeval,
 }
 
 impl fmt::Debug for utmp {
