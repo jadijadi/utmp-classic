@@ -1,9 +1,9 @@
 use super::{cstr_from_bytes, UT_HOSTSIZE, UT_LINESIZE, UT_NAMESIZE};
 use std::fmt;
-use zerocopy::FromBytes;
+use zerocopy::{FromZeroes, FromBytes};
 
+#[derive(FromZeroes, FromBytes, Clone, Copy, Debug)]
 #[repr(C)]
-#[derive(Clone, Copy, Debug, FromBytes)]
 pub struct timeval {
     /// Seconds
     pub tv_sec: i32,
@@ -11,8 +11,9 @@ pub struct timeval {
     pub tv_usec: i32,
 }
 
+
+#[derive(FromZeroes, Clone, Copy, FromBytes)]
 #[repr(C)]
-#[derive(Clone, Copy, FromBytes)]
 pub struct utmp {
     /// Device name of tty - `"/dev/"`
     pub ut_line: [u8; UT_LINESIZE],
@@ -37,5 +38,5 @@ impl fmt::Debug for utmp {
 
 #[test]
 fn test_size_of_utmp_x32() {
-    assert_eq!(std::mem::size_of::<utmp>(), 328);
+    assert_eq!(std::mem::size_of::<utmp>(), 304);
 }

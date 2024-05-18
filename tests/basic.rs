@@ -1,8 +1,6 @@
 use anyhow::Result;
 use once_cell::sync::Lazy;
-use std::fs::File;
-use std::io::{self, BufReader, Read};
-use std::iter::FromIterator;
+use std::io::{self, Read};
 use std::path::PathBuf;
 use time::OffsetDateTime;
 use utmp_classic::{parse_from_path, Utmp32Parser, Utmp64Parser, UtmpEntry};

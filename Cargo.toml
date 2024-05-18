@@ -7,7 +7,7 @@ categories = ["os::unix-apis"]
 authors = ["Jadi <jadijadi@gmail.com>"]
 repository = "https://github.com/jadijadi/utmp-classic"
 license = "MIT"
-version = "0.1.5"
+version = "0.1.6"
 readme = "README.md"
 
 [[example]]
@@ -16,10 +16,10 @@ path = "examples/dump_utmp.rs"
 
 [dependencies]
 cfg-if = "1.0.0"
-zerocopy = "0.6"
+zerocopy = "0.7.34"
 time = "0.3"
 libc = "0.2.66"
-utmp-classic-raw = { version = "0.1.2", path = "raw" }
+utmp-classic-raw = { version = "0.1.3", path = "raw" }
 thiserror = "1.0.10"
 
 

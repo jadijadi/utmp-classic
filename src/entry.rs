@@ -1,4 +1,3 @@
-use std::convert::TryFrom;
 use std::ffi::CStr;
 use std::os::raw::c_short;
 use thiserror::Error;

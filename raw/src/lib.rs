@@ -3,7 +3,6 @@
 use cfg_if::cfg_if;
 use std::ffi::CStr;
 use std::os::raw::c_short;
-use zerocopy::FromBytes;
 
 pub mod x32;
 pub mod x64;
@@ -36,7 +35,7 @@ pub const UT_HOSTSIZE: usize = 256;
 
 /// Type for `ut_exit`, below
 #[repr(C)]
-#[derive(Clone, Copy, Debug, FromBytes)]
+#[derive(Clone, Copy, Debug)]
 pub struct exit_status {
     /// Process termination status
     pub e_termination: c_short,
