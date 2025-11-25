@@ -16,7 +16,7 @@ path = "examples/dump_utmp.rs"
 
 [dependencies]
 cfg-if = "1.0.0"
-zerocopy = "0.7.34"
+zerocopy = "0.8"
 time = "0.3"
 libc = "0.2.66"
 utmp-classic-raw = { version = "0.1.3", path = "raw" }

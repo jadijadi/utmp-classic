@@ -1,9 +1,9 @@
 use super::{cstr_from_bytes, UT_HOSTSIZE, UT_LINESIZE, UT_NAMESIZE};
 use std::fmt;
-use zerocopy::{FromZeroes, FromBytes};
+use zerocopy::{FromBytes, Immutable, KnownLayout};
 
 #[repr(C)]
-#[derive(Clone, Copy, Debug, FromZeroes, FromBytes)]
+#[derive(Clone, Copy, Debug, FromBytes, Immutable, KnownLayout)]
 pub struct timeval {
     /// Seconds
     pub tv_sec: i64,
@@ -12,7 +12,7 @@ pub struct timeval {
 }
 
 #[repr(C)]
-#[derive(Clone, Copy, FromZeroes, FromBytes)]
+#[derive(Clone, Copy, FromBytes, Immutable, KnownLayout)]
 pub struct utmp {
     /// Device name of tty - `"/dev/"`
     pub ut_line: [u8; UT_LINESIZE],
