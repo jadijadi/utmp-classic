@@ -20,7 +20,7 @@ zerocopy = "0.8"
 time = "0.3"
 libc = "0.2.66"
 utmp-classic-raw = { version = "0.2.0", path = "raw" }
-thiserror = "1.0.10"
+thiserror = "2"
 
 
 [workspace]
