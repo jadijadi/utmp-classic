@@ -57,6 +57,7 @@ cfg_if! {
         target_arch = "sparc",
         target_arch = "sparc64",
         target_arch = "aarch64",
+        target_arch = "loongarch64",
     ))] {
         pub use x32::*;
     } else if #[cfg(any(
