@@ -1,6 +1,6 @@
 use anyhow::Result;
-use std::{env, process};
 use std::path::PathBuf;
+use std::{env, process};
 
 fn main() -> Result<()> {
     let mut args = env::args_os();
