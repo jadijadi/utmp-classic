@@ -84,10 +84,11 @@ impl<R: Read> Iterator for UtmpParserImpl<R, utmp64> {
     }
 }
 
-fn read_entry<R: Read, T: FromBytes>(
-    mut reader: R,
-    buffer: &mut [u8],
-) -> Result<Option<&T>, ParseError> where T: Immutable, T: KnownLayout {
+fn read_entry<R, T>(mut reader: R, buffer: &mut [u8]) -> Result<Option<&T>, ParseError>
+where
+    R: Read,
+    T: FromBytes + Immutable + KnownLayout,
+{
     let size = buffer.len();
     let mut buf = &mut buffer[..];
     loop {
@@ -109,9 +110,9 @@ fn read_entry<R: Read, T: FromBytes>(
             Err(e) => return Err(e.into()),
         }
     }
-    Ok(Some(
-        Ref::<_, T>::into_ref(Ref::<_, T>::from_bytes(buffer).unwrap()),
-    ))
+    Ok(Some(Ref::<_, T>::into_ref(
+        Ref::<_, T>::from_bytes(buffer).unwrap(),
+    )))
 }
 
 /// Parse utmp entries from the given path.
