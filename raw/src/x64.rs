@@ -1,14 +1,15 @@
 use super::{cstr_from_bytes, UT_HOSTSIZE, UT_LINESIZE, UT_NAMESIZE};
 use std::fmt;
+use zerocopy::byteorder::native_endian::I64;
 use zerocopy::{FromBytes, Immutable, KnownLayout};
 
 #[repr(C)]
 #[derive(Clone, Copy, Debug, FromBytes, Immutable, KnownLayout)]
 pub struct timeval {
     /// Seconds
-    pub tv_sec: i64,
+    pub tv_sec: I64,
     /// Microseconds
-    pub tv_usec: i64,
+    pub tv_usec: I64,
 }
 
 #[repr(C)]

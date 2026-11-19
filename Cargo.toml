@@ -18,7 +18,6 @@ path = "examples/dump_utmp.rs"
 cfg-if = "1.0.0"
 zerocopy = "0.8"
 time = "0.3"
-libc = "0.2.66"
 utmp-classic-raw = { version = "0.2.1", path = "raw" }
 thiserror = "2"
 

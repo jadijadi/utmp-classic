@@ -77,5 +77,3 @@ fn cstr_from_bytes(bytes: &[u8]) -> &CStr {
         None => unsafe { CStr::from_bytes_with_nul_unchecked("???\0".as_bytes()) },
     }
 }
-
-

@@ -19,10 +19,10 @@ pub enum UtmpEntry {
         /// Session ID (`getsid(2)`)
         time: OffsetDateTime,
         // TODO: Figure out the correct byte order to parse the address
-    },    
+    },
 }
 
-impl<'a> TryFrom<&'a utmp32> for UtmpEntry {
+impl TryFrom<&utmp32> for UtmpEntry {
     type Error = UtmpError;
 
     fn try_from(from: &utmp32) -> Result<Self, UtmpError> {
@@ -31,22 +31,22 @@ impl<'a> TryFrom<&'a utmp32> for UtmpEntry {
             ut_user: from.ut_user,
             ut_host: from.ut_host,
             ut_tv: timeval64 {
-                tv_sec: i64::from(from.ut_tv.tv_sec),
-                tv_usec: i64::from(from.ut_tv.tv_usec),
+                tv_sec: i64::from(from.ut_tv.tv_sec.get()).into(),
+                tv_usec: i64::from(from.ut_tv.tv_usec.get()).into(),
             },
         })
     }
 }
 
-impl<'a> TryFrom<&'a utmp64> for UtmpEntry {
+impl TryFrom<&utmp64> for UtmpEntry {
     type Error = UtmpError;
 
     fn try_from(from: &utmp64) -> Result<Self, UtmpError> {
         Ok(UtmpEntry::UTMP {
-                line: string_from_bytes(&from.ut_line).map_err(UtmpError::InvalidLine)?,
-                user: string_from_bytes(&from.ut_user).map_err(UtmpError::InvalidUser)?,
-                host: string_from_bytes(&from.ut_host).map_err(UtmpError::InvalidHost)?,
-                time: time_from_tv(from.ut_tv)?,
+            line: string_from_bytes(&from.ut_line).map_err(UtmpError::InvalidLine)?,
+            user: string_from_bytes(&from.ut_user).map_err(UtmpError::InvalidUser)?,
+            host: string_from_bytes(&from.ut_host).map_err(UtmpError::InvalidHost)?,
+            time: time_from_tv(from.ut_tv)?,
         })
     }
 }
@@ -68,6 +68,10 @@ pub enum UtmpError {
 
 fn time_from_tv(tv: timeval64) -> Result<OffsetDateTime, UtmpError> {
     let timeval64 { tv_sec, tv_usec } = tv;
+
+    let tv_sec = tv_sec.get();
+    let tv_usec = tv_usec.get();
+
     if tv_usec < 0 {
         return Err(UtmpError::InvalidTime(tv));
     }
