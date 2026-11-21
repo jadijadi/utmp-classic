@@ -1,6 +1,7 @@
 [package]
 name = "utmp-classic"
 edition = "2021"
+rust-version = "1.61"
 description = "Parsing login records in classic UNIXv1 type UTMP files; still used in OpenBSD"
 keywords = ["utmp", "openbsd", "unix", "login"]
 categories = ["os::unix-apis"]
